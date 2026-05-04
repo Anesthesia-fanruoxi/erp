@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+mysql:
+  host: 192.168.6.2
+  port: 3308
+  username: root
+  password: root
+  database: erp
+  maxIdleConns: 10
+  maxOpenConns: 100
+
+redis:
+  host: 192.168.6.2
+  port: 6381
+  password: "redis"
+  db: 0
+
+token:
+  expireTime: 7200  # Token过期时间(秒), 2小时

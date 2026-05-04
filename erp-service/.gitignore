@@ -1,0 +1,25 @@
+# Go 编译产物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+erp-service
+
+# Go 测试
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Go vendor (如果不提交vendor)
+# vendor/
+
+# 配置文件中可能包含敏感信息的本地覆盖
+config/config.local.yaml
+
+# 临时文件
+tmp/
+/sql/add_business_menus.sql
+/sql/add_delivery_addr.sql
+/sql/add_contract_table.sql

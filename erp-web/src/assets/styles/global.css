@@ -1,0 +1,165 @@
+/* ======================== */
+/* 全局样式 - ERP System     */
+/* ======================== */
+
+/* 字体引入 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* 基础重置 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  color: #303133;
+  background: #f5f6fa;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 全局滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Element Plus 覆盖 */
+
+/* 按钮圆润 */
+.el-button {
+  border-radius: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+}
+
+/* 输入框圆润 */
+.el-input__wrapper {
+  border-radius: 10px !important;
+}
+
+/* 选择框 */
+.el-select__wrapper {
+  border-radius: 10px !important;
+}
+
+/* 卡片圆润 */
+.el-card {
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden;
+}
+
+.el-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 表格圆润 */
+.el-table {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.el-table th.el-table__cell {
+  background: #f8f9fc !important;
+  color: #606266;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* 对话框圆润 */
+.el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  padding: 20px 24px 16px !important;
+  border-bottom: 1px solid #f0f0f5;
+}
+
+.el-dialog__body {
+  padding: 20px 24px !important;
+}
+
+.el-dialog__footer {
+  padding: 16px 24px 20px !important;
+  border-top: 1px solid #f0f0f5;
+}
+
+/* 消息提示圆润 */
+.el-message {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 下拉菜单圆润 */
+.el-dropdown-menu {
+  border-radius: 12px !important;
+  padding: 6px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #f0f0f5 !important;
+}
+
+.el-dropdown-menu__item {
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+}
+
+/* 分页器 */
+.el-pagination .el-pager li {
+  border-radius: 8px !important;
+}
+
+/* 标签 */
+.el-tag {
+  border-radius: 8px !important;
+}
+
+/* 弹出层 */
+.el-popover {
+  border-radius: 12px !important;
+}
+
+/* 选择过渡 */
+.el-select-dropdown {
+  border-radius: 12px !important;
+}
+
+/* Form Label */
+.el-form-item__label {
+  font-weight: 500;
+  color: #606266;
+}
