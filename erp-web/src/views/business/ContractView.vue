@@ -582,8 +582,14 @@ function parseFromHtml(html: string): { header: any; items: ContractItem[] } {
       console.log('[收货地址] 截断前原始值:', JSON.stringify(val))
       console.log('[收货地址] cols:', JSON.stringify(cols))
       console.log('[收货地址] firstNonEmpty:', JSON.stringify(firstNonEmpty))
-      // 截断：遇到下一个行首编号项（数字+点+中文，如 "4.增值税"）则停止
-      val = val.replace(/\d+[.．]\s*[\u4e00-\u9fa5].*/s, '').trim()
+      // 修复：使用负向后瞻确保数字序列不是其他数字的一部分
+      // (?<!\d) 确保前面没有数字，\d{1,3} 匹配1-3位数字（章节号）
+      // 这样可以避免匹配手机号中的数字（如"199185094664"中的"664"）
+      const sectionPattern = /(?<!\d)\d{1,3}[.．]\s*[\u4e00-\u9fa5]/
+      const matchIndex = val.search(sectionPattern)
+      if (matchIndex > 0) {
+        val = val.substring(0, matchIndex).trim()
+      }
       console.log('[收货地址] 截断后:', JSON.stringify(val))
       h.deliveryAddr = val
       continue
@@ -652,8 +658,17 @@ function parseFromText(text: string): { header: any; items: ContractItem[] } {
       h.orderNo = nonEmpty[1] || ''; continue
     }
     if (cols[0].includes('收货地址')) {
-      h.deliveryAddr = nonEmpty.filter(c => !c.includes('收货地址')).join('').trim()
+      let val = nonEmpty.filter(c => !c.includes('收货地址')).join('').trim()
         || cols[0].replace(/^[\d.]*收货地址[：:]\s*/, '').trim()
+      // 修复：使用负向后瞻确保数字序列不是其他数字的一部分
+      // (?<!\d) 确保前面没有数字，\d{1,3} 匹配1-3位数字（章节号）
+      // 这样可以避免匹配手机号中的数字（如"199185094664"中的"664"）
+      const sectionPattern = /(?<!\d)\d{1,3}[.．]\s*[\u4e00-\u9fa5]/
+      const matchIndex = val.search(sectionPattern)
+      if (matchIndex > 0) {
+        val = val.substring(0, matchIndex).trim()
+      }
+      h.deliveryAddr = val
       continue
     }
     if (!inTable && (cols[0] === '序号' || cols.some(c => c.includes('材料')))) {
